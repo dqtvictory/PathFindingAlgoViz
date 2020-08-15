@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Visualization</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="https://www.brython.info/src/brython.js"></script>
+    <script type="text/javascript" src="https://www.brython.info/src/brython_stdlib.js"></script>
+</head>
+
+<body onload="brython({debug: 1, indexedDB: false})">
+    <h1>Path Finding Algorithm Visualization</h1>
+    <p class="page-description">
+        Visualize how a path finding algorithm works using <a href="https://brython.info/">Brython</a>. 
+        In this page, I'm going to implement 2 different algorithms to find the shortest path 
+        between two nodes: Breadth First Search (BFS) and A-star. Here are quick words on how they work:
+    </p>
+    <ul>
+        <li>
+            <b>Breadth First Search (BFS)</b> algorithm searches for the ending point by layers, where each 
+            layer is the next direct unsearched neighbors of the nodes in the previous layer. This algorithm 
+            ensures that once the ending point is found, the path being traced back is the shortest possible 
+            path. More information on 
+            <a href="https://en.wikipedia.org/wiki/Breadth-first_search">this Wikipedia page</a>.
+        </li>
+        <li>
+            <b>A-Star (A*)</b> algorithm also provides the shortest path solution, and even better, a faster 
+            execution time than BFS. Instead of searching (nearly) exhaustively, the algorithm calculates at 
+            each round an F-score of each node (based on a good estimation of the distance with the ending point) 
+            then decide where to search next based on the calculation. More information on 
+            <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">this Wikipedia page</a>.
+        </li>
+    </ul>
+    <table id="main-table">
+        <tbody id="grid-table"></tbody>
+    </table>
+    <p>&nbsp;</p>
+    <table>
+        <tbody>
+            <td id="status-text">Loading...</td>
+        </tbody>
+    </table>
+    <center>
+        <div class="dropdown">
+            <button class="dropbtn">Choose an algorithm</button>
+            <div class="dropdown-content">
+                <a href="#" id="choose-bfs">Breadth First Search</a>
+                <a href="#" id="choose-a-star">A*</a>
+            </div>
+        </div>
+        <button id="run">Run BFS</button>
+        <button id="randomize">Randomize</button>
+        <button id="reset">Reset</button>
+    </center>
+    <p class="footer" align="center">
+        Created by <a href="mailto:dqt@trungdam.fr">Trung Dam</a>, a passionate part-time programmer.<br/>
+        Find the source code for this project on <a href="https://github.com/dqtvictory/">my GitHub page</a>.
+    </p>
+    <script type="text/python" class="webworker" id="worker" src="worker.py"></script>
+    <script type="text/python" src="script.py"></script>
+</body>
+
+</html>
